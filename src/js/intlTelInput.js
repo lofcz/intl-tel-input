@@ -191,7 +191,23 @@ class Iti {
 
     // sort countries by name
     if (this.options.onlyCountries.length || this.options.i18n) {
-      this.countries.sort(this._countryNameSort);
+
+      if (this.options.onlyCountries.length) {
+          var sorted = [];
+
+          for (var x of this.options.onlyCountries) {
+              var item = this.countries.find(y => y.iso2 == x);
+
+              if (item) {
+                sorted.push(item);
+              }
+          }
+
+          this.countries = sorted;
+      }
+      else {
+        this.countries.sort(this._countryNameSort);
+      }
     }
   }
 
@@ -248,6 +264,7 @@ class Iti {
 
   // sort by country name
   _countryNameSort(a, b) {
+
     if (a.name < b.name) {
       return -1;
     }

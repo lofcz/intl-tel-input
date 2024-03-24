@@ -83,7 +83,7 @@
   "homepage": "https://intl-tel-input.com",
   "scripts": {
     "test": "grunt travis",
-    "build": "grunt build",
+    "build": "grunt build --force",
     "build:js": "grunt js",
     "build:utils": "grunt build:utils",
     "build:css": "grunt css",
